@@ -42,6 +42,20 @@
     config.zip = zip;
   };
 
+  weather.setLocation = function(location={}){
+    delete config.city
+    delete config.latitude
+    delete config.longitude
+    delete config.cityId
+    delete config.zip
+
+    if(location.city) config.city = encodeURIComponent(city.toLowerCase());
+    if(location.latitude) config.latitude = latitude;
+    if(location.longitude) config.longitude = longitude;
+    if(location.cityId) config.cityId = cityid;
+    if(location.zip) config.zip = zip;
+  };
+
   weather.setUnits = function(units){
     config.units = units.toLowerCase();
   };
@@ -171,7 +185,7 @@
       smartJSON.description = ((jsonObj.weather[0]).description);
       smartJSON.weathercode = ((jsonObj.weather[0]).id);
 
-      // return the rain in mm if present 
+      // return the rain in mm if present
       if(jsonObj.precipitation){
         smartJSON.rain = jsonObj.precipitation.value;
       }else {
@@ -182,7 +196,7 @@
         var rain3h = jsonObj.rain;
         smartJSON.rain = Math.round(rain3h['3h'] / 3);
       }
-      
+
       return callback(err,smartJSON);
     });
   }
