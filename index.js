@@ -49,11 +49,11 @@
     delete config.cityId
     delete config.zip
 
-    if(location.city) config.city = encodeURIComponent(city.toLowerCase());
-    if(location.latitude) config.latitude = latitude;
-    if(location.longitude) config.longitude = longitude;
-    if(location.cityId) config.cityId = cityid;
-    if(location.zip) config.zip = zip;
+    if(location.city) config.city = encodeURIComponent(location.city.toLowerCase());
+    if(location.latitude) config.latitude = location.latitude;
+    if(location.longitude) config.longitude = location.longitude;
+    if(location.cityId) config.cityId = location.cityid;
+    if(location.zip) config.zip = location.zip;
   };
 
   weather.setUnits = function(units){
